@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package com.example.smartagritest;
+
+option java_multiple_files = true;
+option java_package = "com.example.smartagritest";
+option java_outer_classname = "LiveStockManagementProto";
+
+// Service definition for LiveStockManagement Service
+
+service LiveStockManagementService {
+
+  // Add a new livestock to the system
+  rpc addLivestock(AddLiveStockRequest) returns (AddLiveStockResponse) {}
+
+  // Remove an existing livestock from the system
+  rpc removeLivestock(RemoveLiveStockRequest) returns (RemoveLiveStockResponse) {}
+
+  // Update an existing livestock in the system
+  rpc updateLivestock(UpdateLiveStockRequest) returns (UpdateLiveStockResponse) {}
+
+  // Get information about a specific livestock in the system
+  rpc getLivestock(GetLiveStockRequest) returns (GetLiveStockResponse) {}
+
+  // Feed a specific livestock in the system
+  rpc feedLivestock(FeedLiveStockRequest) returns (FeedLiveStockResponse) {}
+
+  // Water a specific livestock in the system
+  rpc waterLivestock(WaterLiveStockRequest) returns (WaterLiveStockResponse) {}
+
+  // Vaccinate a specific livestock in the system
+  rpc vaccinateLivestock(VaccinateLiveStockRequest) returns (VaccinateLiveStockResponse) {}
+}
+
+
+message LiveStock {
+  string name = 1;
+  string type = 2;
+  string birth_date = 3;
+  int32 quantity = 4;
+}
+
+message AddLiveStockRequest {
+  LiveStock liveStock = 1;
+}
+
+message AddLiveStockResponse {
+  string message = 1;
+}
+
+message RemoveLiveStockRequest {
+  string name = 1;
+}
+
+message RemoveLiveStockResponse {
+  string message = 1;
+}
+
+message UpdateLiveStockRequest {
+  LiveStock liveStock = 1;
+}
+
+message UpdateLiveStockResponse {
+  string message = 1;
+}
+
+message GetLiveStockRequest {
+  string name = 1;
+}
+
+message GetLiveStockResponse {
+  LiveStock liveStock = 1;
+}
+
+message FeedLiveStockRequest {
+  string name = 1;
+  double amount = 2;
+}
+
+message FeedLiveStockResponse {
+  string message = 1;
+}
+
+message WaterLiveStockRequest {
+  string name = 1;
+  double amount = 2;
+}
+
+message WaterLiveStockResponse {
+  string message = 1;
+}
+
+message VaccinateLiveStockRequest {
+  string name = 1;
+  string type = 2;
+}
+
+message VaccinateLiveStockResponse {
+  string message = 1;
+}

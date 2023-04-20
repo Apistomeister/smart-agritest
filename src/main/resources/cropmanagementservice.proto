@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package com.example.smartagritest;
+
+option java_multiple_files = true;
+option java_package = "com.example.smartagritest";
+option java_outer_classname = "CropManagementServiceProto";
+
+// Service definition for Crop Management Service
+
+service CropManagementService {
+
+  // Add a new crop
+  rpc addCrop(AddCropRequest) returns (AddCropResponse) {}
+
+  // Remove an existing crop
+  rpc removeCrop(RemoveCropRequest) returns (RemoveCropResponse) {}
+
+  // Update an existing crop
+  rpc updateCrop(UpdateCropRequest) returns (UpdateCropResponse) {}
+
+  // Get information about a crop
+  rpc getCropInfo(CropInfoRequest) returns (CropInfoResponse) {}
+
+  // Plant a new crop
+  rpc plantCrop(PlantCropRequest) returns (PlantCropResponse) {}
+
+  // Harvest an existing crop
+  rpc harvestCrop(HarvestCropRequest) returns (HarvestCropResponse) {}
+
+  // Water an existing crop
+  rpc waterCrop(WaterCropRequest) returns (WaterCropResponse) {}
+
+}
+
+
+
+message AddCropRequest {
+  string name = 1;
+  string type = 2;
+  int32 quantity = 3;
+}
+
+message AddCropResponse {
+  string message = 1;
+}
+
+message RemoveCropRequest {
+  string name = 1;
+}
+
+message RemoveCropResponse {
+  string message = 1;
+}
+
+message UpdateCropRequest {
+  string name = 1;
+  string new_type = 2;
+  string new_planting_date = 3;
+}
+
+message UpdateCropResponse {
+  string message = 1;
+}
+
+
+message CropInfoRequest {
+  string name = 1;
+}
+
+message CropInfoResponse {
+  string name = 1;
+  string type = 2;
+  string planting_date = 3;
+}
+
+message PlantCropRequest {
+  string name = 1;
+  string seed_type = 2;
+  string planting_date = 3;
+}
+
+message PlantCropResponse {
+  string message = 1;
+}
+
+message HarvestCropRequest {
+  string name = 1;
+  string harvesting_date = 2;
+}
+
+message HarvestCropResponse {
+  string message = 1;
+}
+
+message WaterCropRequest {
+  string name = 1;
+  double amount = 2;
+}
+
+message WaterCropResponse {
+  string message = 1;
+}

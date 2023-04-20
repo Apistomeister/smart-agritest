@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package com.example.smartagritest;
+
+option java_multiple_files = true;
+option java_package = "com.example.smartagritest";
+option java_outer_classname = "SensorServiceProto";
+
+// Service definition for Sensor Service
+
+service SensorService {
+  // Get the temperature reading from a sensor
+  rpc getTemperature(TemperatureRequest) returns (TemperatureResponse) {}
+
+  // Get the humidity reading from a sensor
+  rpc getHumidity(HumidityRequest) returns (HumidityResponse) {}
+
+  // Get the light level reading from a sensor
+  rpc getLightLevel(LightLevelRequest) returns (LightLevelResponse) {}
+
+  // Set the configuration for a sensor
+  rpc setSensorConfiguration(SensorConfiguration) returns (SensorConfigurationResponse) {}
+
+  // Set the alert threshold for a sensor
+  rpc setAlertThreshold(AlertThreshold) returns (AlertThresholdResponse) {}
+}
+
+
+message TemperatureReading {
+  double temperature = 1;
+  int64 timestamp = 2;
+}
+
+message HumidityReading {
+  double humidity = 1;
+  int64 timestamp = 2;
+}
+
+message LightLevelReading {
+  double light_level = 1;
+  int64 timestamp = 2;
+}
+
+message SensorConfiguration {
+  string sensor_name = 1;
+  int32 polling_interval = 2;
+  double sensitivity = 3;
+}
+
+message AlertThreshold {
+  string sensor_name = 1;
+  double threshold = 2;
+}
+
+message TemperatureRequest {
+  string sensor_name = 1;
+}
+
+message TemperatureResponse {
+  TemperatureReading temperature_reading = 1;
+}
+
+message HumidityRequest {
+  string sensor_name = 1;
+}
+
+message HumidityResponse {
+  HumidityReading humidity_reading = 1;
+}
+
+message LightLevelRequest {
+  string sensor_name = 1;
+}
+
+message LightLevelResponse {
+  LightLevelReading light_level_reading = 1;
+}
+
+message SensorConfigurationResponse {
+  string status = 1;
+}
+
+message AlertThresholdResponse {
+  string status = 1;
+}
